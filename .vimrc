@@ -86,7 +86,7 @@ color mycolor
 let g:molokai_original = 1
 let g:rehash256 = 1
 
-set fillchars=vert:\  
+"set fillchars=vert:\  
 
 "在被分割的窗口间显示空白，便于阅读 (没看到效果)
 "stl:/ : 当前窗口状态栏显示'空格' ('/'转义字符)
