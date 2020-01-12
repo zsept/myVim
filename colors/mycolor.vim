@@ -15,8 +15,6 @@ set fillchars=vert:\
 set cursorline
 set cursorcolumn
 
-hi MyTagListFileName ctermfg=15 ctermbg=234 guifg=103 guibg=234
-
 "hi IncSearch -- no settings --
 "hi WildMenu -- no settings --
 "hi CTagsMember -- no settings --

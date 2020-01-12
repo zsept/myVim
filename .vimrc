@@ -20,29 +20,31 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Using a non-master branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 "Plug 'fatih/vim-go', { 'tag': '*' }
 
 " Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 " Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 
-" Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 
 " Plug 'ctrlpvim/ctrlp.vim'
 
 " Plug 'junegunn/limelight.vim'
 
 " Plug 'tomasr/molokai'
+
+Plug 'nanotech/jellybeans.vim'
 
 " Plug 'vim-scripts/ScrollColors'
 
@@ -58,33 +60,22 @@ Plug 'vim-scripts/mru.vim'
 
 " Plug 'nanotech/jellybeans.vim' 
 
-Plug 'vim-scripts/taglist.vim'
+" Plug 'vim-scripts/taglist.vim'
 
+Plug 'junegunn/goyo.vim' 
+
+" plug for markdown
+Plug 'godlygeek/tabular'
+
+" plug for markdown
+Plug 'plasticboy/vim-markdown'
 
 " Initialize plugin system
 call plug#end()
 
 
-""""""""""""""""""""""""""""""""""""""""tagbar or taglist """""""""""""""""""""""""""""""""""""""""""""
-"nmap <F8> :TagbarToggle<CR>
-nmap <F8> :TlistToggle<CR>
-"只显示当前文件的tags
-let Tlist_Enable_Fold_Column = 0
-let Tlist_Show_One_File = 1                                                      
-""设置taglist宽度
-let Tlist_WinWidth=40
-"taglist 窗口是最后一个窗口，则退出VIM
-let Tlist_Eixt_OnlyWindow=1
-""在VIM窗口右侧显示taglist窗口                                                             
-let Tlist_Use_Right_Window=1   
-
-
 """"""""""""""""""""""""""""""""""color theme """""""""""""""""""""""""""""""""""""""""""
-set t_Co=256
-
-color mycolor 
-let g:molokai_original = 1
-let g:rehash256 = 1
+color mycolor
 
 "set fillchars=vert:\  
 
@@ -104,6 +95,21 @@ let g:rehash256 = 1
 syntax on
 filetype on
 filetype plugin on
+
+set laststatus=2
+
+set lazyredraw
+
+" When the page starts to scroll, keep the cursor 8 lines from the top and 8 lines from the bottom
+set scrolloff=12
+
+set nowrap
+
+set synmaxcol=2048
+
+set nocursorline
+
+set nocursorcolumn
 
 let mapleader = "," 
 "let mapleader="\<Space>" "前缀键，即<leader>
@@ -133,11 +139,17 @@ set hlsearch
 hi Search  cterm=underline ctermfg=208 ctermbg=NONE
 
 
+""""""""""""""""""""""""""""""""""""""""tagbar or taglist """""""""""""""""""""""""""""""""""""""""""""
+let g:tagbar_ctags_bin = "/root/.vim/dependency/universal-ctags/bin/ctags"
+nmap <F8> :TagbarToggle<CR>
+
+
+
 """""""""""""""""""autotags""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:autotagTagsFile=".tags"
 
-let g:autotags_ctags_exe = "ctags"
-let g:autotags_cscope_exe = "cscope"
+let g:autotags_ctags_exe = "/root/.vim/dependency/universal-ctags/bin/ctags"
+"let g:autotags_cscope_exe = "cscope"
 let g:autotags_ctags_opts = "--c++-kinds=+p --fields=+iaS --extra=+q"
 let g:autotags_cscope_file_extensions = ".cpp .cc .cxx .m .hpp .hh .h .hxx .c .idl"
 
@@ -148,19 +160,18 @@ let g:autotags_export_cscope_dir = 1
 " source ~/.vim/plugin/cscope_macros.vim
 
 """""""""""""""""""""""""""""nerdtree"""""""""""""""""""""""""""""""""""""""""""""""""""""
-"自动打开nerdtree
-"autocmd vimenter * NERDTree
-"打开关闭nerdtree
-map <F7> :NERDTreeToggle<CR>         
-nnoremap ,nf :NERDTreeFind<CR>
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
+" 自动打开nerdtree
+" autocmd vimenter * NERDTree
 
-
-let Tlist_Show_One_File = 1            "不同时显示多个文件的tag，只显示当前文件的
-let Tlist_Exit_OnlyWindow = 1          "如果taglist窗口是最后一个窗口，则退出vim
-let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口
-let Tlist_Enable_Fold_Column  = 0      "taglist 层级数目(左侧)
+" show bookmark
+let NERDTreeShowBookmarks=1
+" close when open file
+let g:NERDTreeQuitOnOpen = 0
+" 打开关闭nerdtree
+nmap <F7> :NERDTreeToggle<CR>         
+nmap ,nf :NERDTreeFind<CR>
+" let g:NERDTreeDirArrowExpandable = '▸'
+" let g:NERDTreeDirArrowCollapsible = '▾'
 
 
 """""""""""""""""""mark"""""""""""""""""""""""""""""""""
@@ -192,6 +203,7 @@ let MRU_Use_Current_Window = 0
 let MRU_Auto_Close = 1
  
 """""""""""""""""""""""""""" nerdcommenter """"""""""""""""""""""""""
+let g:NERDSpaceDelims=1 "注释添加空格
 nmap <silent>  <backspace> <plug>NERDCommenterToggle :call <SID>NERDComment('nx', "Toggle")<CR>
 vmap <silent>  <backspace> <plug>NERDCommenterToggle :call <SID>NERDComment('nx', "Toggle")<CR>
 " vmap <silent>  <backspace> <plug>NERDCommenterInvert :call <SID>NERDCommentInvert('nx', "Invert")<CR>
@@ -201,11 +213,5 @@ vmap <silent>  <backspace> <plug>NERDCommenterToggle :call <SID>NERDComment('nx'
 map <space> <Plug>(easymotion-prefix)
  
 
-
-
-
-
-
-
-
-
+"""""""""""""""""""""""""""""  vim markdown """""""""""""""""""""""""""""
+let g:vim_markdown_folding_disabled = 1
