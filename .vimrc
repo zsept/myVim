@@ -31,8 +31,8 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plugin outside ~/.vim/plugged with post-update hook
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Plug 'easymotion/vim-easymotion'
 
@@ -140,7 +140,8 @@ hi Search  cterm=underline ctermfg=208 ctermbg=NONE
 
 
 """"""""""""""""""""""""""""""""""""""""tagbar or taglist """""""""""""""""""""""""""""""""""""""""""""
-let g:tagbar_ctags_bin = "/root/.vim/dependency/universal-ctags/bin/ctags"
+let g:tagbar_ctags_bin = "~/.vim/dependency/universal-ctags/bin/ctags"
+
 nmap <F8> :TagbarToggle<CR>
 
 
@@ -148,8 +149,8 @@ nmap <F8> :TagbarToggle<CR>
 """""""""""""""""""autotags""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:autotagTagsFile=".tags"
 
-let g:autotags_ctags_exe = "/root/.vim/dependency/universal-ctags/bin/ctags"
-"let g:autotags_cscope_exe = "cscope"
+let g:autotags_ctags_exe = "~/.vim/dependency/universal-ctags/bin/ctags"
+let g:autotags_cscope_exe = "~/.vim/dependency/cscope/bin/cscope"
 let g:autotags_ctags_opts = "--c++-kinds=+p --fields=+iaS --extra=+q"
 let g:autotags_cscope_file_extensions = ".cpp .cc .cxx .m .hpp .hh .h .hxx .c .idl"
 
