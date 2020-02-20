@@ -50,7 +50,7 @@ Plug 'nanotech/jellybeans.vim'
 
 " Plug 'altercation/vim-colors-solarized'
 
-" Plug 'basilgor/vim-autotags'
+Plug 'basilgor/vim-autotags'
 
 " Plug 'fishy/projtags-vim' 
 
@@ -139,8 +139,13 @@ set hlsearch
 hi Search  cterm=underline ctermfg=208 ctermbg=NONE
 
 
+""""""""""""""""""""""""""""""""""""""""ctags and scope """""""""""""""""""""""""""""""""""""""""""""
+" may custom your ctags and scope path
+let g:local_ctags_path=$HOME . '/.vim/dependency/universal-ctags/bin/ctags'
+let g:local_cscope_path=$HOME . '/.vim/dependency/cscope/bin/cscope'
+
 """"""""""""""""""""""""""""""""""""""""tagbar or taglist """""""""""""""""""""""""""""""""""""""""""""
-let g:tagbar_ctags_bin = "~/.vim/dependency/universal-ctags/bin/ctags"
+let g:tagbar_ctags_bin = g:local_ctags_path
 
 nmap <F8> :TagbarToggle<CR>
 
@@ -149,8 +154,8 @@ nmap <F8> :TagbarToggle<CR>
 """""""""""""""""""autotags""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " let g:autotagTagsFile=".tags"
 
-let g:autotags_ctags_exe = "~/.vim/dependency/universal-ctags/bin/ctags"
-let g:autotags_cscope_exe = "~/.vim/dependency/cscope/bin/cscope"
+let g:autotags_ctags_exe = g:local_ctags_path 
+let g:autotags_cscope_exe = g:local_cscope_path
 let g:autotags_ctags_opts = "--c++-kinds=+p --fields=+iaS --extra=+q"
 let g:autotags_cscope_file_extensions = ".cpp .cc .cxx .m .hpp .hh .h .hxx .c .idl"
 
@@ -158,6 +163,7 @@ let g:autotags_no_global = 1
 let g:autotags_export_cscope_dir = 1
 
 """""""""""""""""""""""""""""cscope""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" put it in plugin auto load
 " source ~/.vim/plugin/cscope_macros.vim
 
 """""""""""""""""""""""""""""nerdtree"""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -176,8 +182,6 @@ nmap ,nf :NERDTreeFind<CR>
 
 
 """""""""""""""""""mark"""""""""""""""""""""""""""""""""
-" source ~/.vim/plugin/cscope_macros.vim
-
 nmap <unique> <silent> mm <Plug>MarkSet
 vmap <unique> <silent> mm <Plug>MarkSet
 nmap <unique> <silent> mr <Plug>MarkRegex
