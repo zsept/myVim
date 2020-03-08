@@ -40,25 +40,13 @@ Plug 'majutsushi/tagbar'
 
 " Plug 'ctrlpvim/ctrlp.vim'
 
-" Plug 'junegunn/limelight.vim'
-
-" Plug 'tomasr/molokai'
-
-Plug 'nanotech/jellybeans.vim'
-
-" Plug 'vim-scripts/ScrollColors'
-
-" Plug 'altercation/vim-colors-solarized'
-
-Plug 'basilgor/vim-autotags'
+" Plug 'basilgor/vim-autotags'
 
 " Plug 'fishy/projtags-vim' 
 
 Plug 'scrooloose/nerdcommenter' 
 
 Plug 'vim-scripts/mru.vim' 
-
-" Plug 'nanotech/jellybeans.vim' 
 
 " Plug 'vim-scripts/taglist.vim'
 
@@ -70,29 +58,17 @@ Plug 'godlygeek/tabular'
 " plug for markdown
 Plug 'plasticboy/vim-markdown'
 
+" plug color theme vim-one
+Plug 'rakr/vim-one'
+
 " Initialize plugin system
 call plug#end()
 
 
-""""""""""""""""""""""""""""""""""color theme """""""""""""""""""""""""""""""""""""""""""
-color mycolor
-
-"set fillchars=vert:\  
-
-"在被分割的窗口间显示空白，便于阅读 (没看到效果)
-"stl:/ : 当前窗口状态栏显示'空格' ('/'转义字符)
-"stlnc:- : 非当前窗口状态栏显示---
-"vert:/| : 垂直分割线为|
-"fold:- : 若设置折叠功能,折叠后显示---
-"set fillchars=stl:/ ,stlnc:-,vert:/|,fold:-,diff:-
-"set fillchars=vert:/ ,stl:/ ,stlnc:/
-
-"map <silent><F3> :NEXTCOLOR<cr> 
-"map <silent><F2> :PREVCOLOR<cr> 
-
 
 """""""""""""""""""""""""""""""""" settings """"""""""""""""""""""""""""""""""""""""""""""""
 syntax on
+" syntax enable
 filetype on
 filetype plugin on
 
@@ -129,14 +105,15 @@ set cindent "设置使用 C/C++ 语言的自动缩进方式
 set shiftwidth=4 "设置自动缩进 2 个空格
 set history=50 
 set incsearch " 输入字符串就显示匹配点
-set hlsearch
+
+set hlsearch " / 搜索高亮
 
 "终端类型     前景色        背景色
 ""term           -              -          黑白终端
 "cterm        ctermfg      ctermgb        彩色终端
 ""gui          guifg        guibg          图形介面
 
-hi Search  cterm=underline ctermfg=208 ctermbg=NONE
+
 
 
 """"""""""""""""""""""""""""""""""""""""ctags and scope """""""""""""""""""""""""""""""""""""""""""""
@@ -144,10 +121,13 @@ hi Search  cterm=underline ctermfg=208 ctermbg=NONE
 let g:local_ctags_path=$HOME . '/.vim/dependency/universal-ctags/bin/ctags'
 let g:local_cscope_path=$HOME . '/.vim/dependency/cscope/bin/cscope'
 
+
+
 """"""""""""""""""""""""""""""""""""""""tagbar or taglist """""""""""""""""""""""""""""""""""""""""""""
 let g:tagbar_ctags_bin = g:local_ctags_path
 
 nmap <F8> :TagbarToggle<CR>
+
 
 
 
@@ -157,19 +137,34 @@ nmap <F8> :TagbarToggle<CR>
 let g:autotags_ctags_exe = g:local_ctags_path 
 let g:autotags_cscope_exe = g:local_cscope_path
 let g:autotags_ctags_opts = "--c++-kinds=+p --fields=+iaS --extra=+q"
-let g:autotags_cscope_file_extensions = ".cpp .cc .cxx .m .hpp .hh .h .hxx .c .idl"
+let g:autotags_cscope_file_extensions = ".cpp .cc .cpp .m .hpp .hh .h .hxx .hpp .c .idl .vim"
 
 let g:autotags_no_global = 1
 let g:autotags_export_cscope_dir = 1
+
+
+
+
 
 """""""""""""""""""""""""""""cscope""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " put it in plugin auto load
 " source ~/.vim/plugin/cscope_macros.vim
 
+
+
+"""""""""""""""""""""""""""""netrw"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" setting do not auto open
+let g:loaded_netrw       = 1
+let g:loaded_netrwPlugin = 1 
+
+
+
 """""""""""""""""""""""""""""nerdtree"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 自动打开nerdtree
 " autocmd vimenter * NERDTree
-
+"
+"Delete help information at the top
+let NERDTreeMinimalUI=1
 " show bookmark
 let NERDTreeShowBookmarks=1
 " close when open file
@@ -197,7 +192,8 @@ endif
 
 let g:airline_symbols.space = "\ua0"
 
-let g:airline_theme='simple'
+" let g:airline_theme='simple'
+let g:airline_theme='one'
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -220,3 +216,37 @@ map <space> <Plug>(easymotion-prefix)
 
 """""""""""""""""""""""""""""  vim markdown """""""""""""""""""""""""""""
 let g:vim_markdown_folding_disabled = 1
+
+
+
+
+""""""""""""""""""""""""""""""""""color theme """""""""""""""""""""""""""""""""""""""""""
+set fillchars=vert:\  
+"set fillchars=vert:\  
+"在被分割的窗口间显示空白，便于阅读 (没看到效果)
+"stl:/ : 当前窗口状态栏显示'空格' ('/'转义字符)
+"stlnc:- : 非当前窗口状态栏显示---
+"vert:/| : 垂直分割线为|
+"fold:- : 若设置折叠功能,折叠后显示---
+"set fillchars=stl:/ ,stlnc:-,vert:/|,fold:-,diff:-
+"set fillchars=vert:/ ,stl:/ ,stlnc:/
+
+"map <silent><F3> :NEXTCOLOR<cr> 
+"map <silent><F2> :PREVCOLOR<cr> 
+
+
+" colorscheme mycolor
+" hi Search  cterm=underline ctermfg=208 ctermbg=NONE
+
+
+" color settting for vim-one
+set background=dark " for the dark version  set background=light for the light version
+let g:one_allow_italics = 1 " italic for comments
+colorscheme one
+if (has("termguicolors"))
+    set termguicolors     " enable true colors support
+endif
+
+hi clear Search
+call one#highlight('Search', 'eec900', '', 'underline')
+
