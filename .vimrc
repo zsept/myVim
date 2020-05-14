@@ -28,9 +28,7 @@ Plug 'plasticboy/vim-markdown'
 " plug color theme vim-one
 Plug 'rakr/vim-one'
 
-Plug 'zxqfl/tabnine-vim' 
-"
-" Plug 'ycm-core/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Initialize plugin system
 call plug#end()
@@ -209,6 +207,23 @@ endif
 
 hi clear Search
 call one#highlight('Search', 'eec900', '', 'underline')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
